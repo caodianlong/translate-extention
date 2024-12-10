@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 400px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input[type="text"]:focus {
+            border-color: #2196F3;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .save-btn {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .save-btn:hover {
+            background-color: #1976D2;
+        }
+
+        .reset-btn {
+            background-color: #f5f5f5;
+            color: #666;
+            border: 1px solid #ddd;
+        }
+
+        .reset-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .status-message {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .success {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            display: block;
+        }
+
+        .error {
+            background-color: #FFEBEE;
+            color: #C62828;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <div class="section-title">API 配置</div>
+            <div class="input-group">
+                <label for="apiToken">API Token</label>
+                <input type="text" id="apiToken" placeholder="请输入 API Token">
+            </div>
+            <div class="input-group">
+                <label for="apiUrl">API 地址</label>
+                <input type="text" id="apiUrl" placeholder="请输入 API 地址">
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="reset-btn" id="resetBtn">重置</button>
+            <button class="save-btn" id="saveBtn">保存</button>
+        </div>
+
+        <div id="status" class="status-message"></div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="options.js"></script>
+</body>
+</html>

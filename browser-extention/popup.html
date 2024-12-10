@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>翻译扩展</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background-color: #f5f5f5;
+      padding: 12px;
+      width: 400px;
+    }
+    .popup-container {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      margin: 0 auto;
+    }
+    .language-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+      align-items: center;
+    }
+    .lang-button {
+      padding: 6px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 13px;
+      color: #333;
+    }
+    .lang-button.active {
+      background: #e3f2fd;
+      border-color: #2196f3;
+      color: #2196f3;
+    }
+    .lang-button:hover {
+      background: #f5f5f5;
+    }
+    .more-langs {
+      position: relative;
+      display: inline-block;
+    }
+    .more-langs-btn {
+      padding: 6px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #fff;
+      cursor: pointer;
+      font-size: 13px;
+      color: #333;
+    }
+    .more-langs-btn:hover {
+      background: #f5f5f5;
+    }
+    .langs-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-height: 300px;
+      overflow-y: auto;
+      z-index: 1000;
+      min-width: 200px;
+    }
+    .langs-dropdown.show {
+      display: block;
+    }
+    .lang-option {
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .lang-option:hover {
+      background: #f5f5f5;
+    }
+    .popup-container textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      resize: vertical;
+      background-color: #fff;
+    }
+    .result-container {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 12px;
+      background-color: #f2f4f7;
+      margin-bottom: 12px;
+    }
+    .result-box {
+      min-height: 100px;
+      border: 1px dashed #ccc;
+      border-radius: 8px;
+      background-color: #ffffff;
+      padding: 8px;
+      color: #666;
+      overflow-wrap: break-word;
+    }
+    .button-group {
+      display: flex;
+      gap: 8px;
+    }
+    .button-group button {
+      flex: 1;
+      padding: 8px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      color: white;
+    }
+    .action-button {
+      background: linear-gradient(90deg, #4caf50, #66bb6a);
+    }
+    .secondary-button {
+      background: linear-gradient(90deg, #5c6bc0, #7986cb);
+    }
+    .action-button:hover {
+      background: linear-gradient(90deg, #45a049, #5da856);
+    }
+    .secondary-button:hover {
+      background: linear-gradient(90deg, #4a55a7, #5c6bb3);
+    }
+    .error-message {
+      color: #ff4444;
+      font-size: 12px;
+      margin-top: 8px;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="popup-container">
+    <textarea id="sourceText" placeholder="请输入要翻译的文本"></textarea>
+
+    <div class="result-container">
+      <div class="language-bar">
+        <button class="lang-button active" data-lang="zh">中文(简体)</button>
+        <button class="lang-button" data-lang="en">英语</button>
+        <div class="more-langs">
+          <button class="more-langs-btn">更多语言 ▾</button>
+          <div class="langs-dropdown" id="langsDropdown"></div>
+        </div>
+      </div>
+      <div class="result-box" id="translationResult">翻译结果将在这里显示</div>
+    </div>
+
+    <div class="button-group">
+      <button id="translateBtn" class="action-button">翻译</button>
+      <button id="copyBtn" class="secondary-button">复制</button>
+    </div>
+    <div id="errorMessage" class="error-message"></div>
+  </div>
+  <script src="config.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
